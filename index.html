@@ -1,262 +1,775 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <title>Adekeye Temilade Portfolio</title>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" media="all" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <link rel="stylesheet" media="all" href="styles.css" />
-    <link rel="stylesheet" media="all"  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link href="https://fonts.googleapis.com/css?family=Exo+2" rel="stylesheet" media="all">
-    <meta name="Description" content="This is a Portfolio for Adekeye Temilade">
-    <link rel="icon" href="images/temi-pic.jpg" type="image/x-icon">
-    <!-- Global site tag (gtag.js) - Google Analytics -->
-	<script async src="https://www.googletagmanager.com/gtag/js?id=UA-75522934-4"></script>
-	<script>
-	  window.dataLayer = window.dataLayer || [];
-	  function gtag(){dataLayer.push(arguments);}
-	  gtag('js', new Date());
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Temilade Adekeye — Product Designer</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;1,400;1,500&family=Outfit:wght@300;400;500&display=swap');
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
 
-	  gtag('config', 'UA-75522934-4');
-	</script>
+@keyframes fadeUp { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: translateY(0); } }
+@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+@keyframes pulseDot { 0%, 100% { box-shadow: 0 0 0 0 rgba(29,158,117,0.5); } 50% { box-shadow: 0 0 0 5px rgba(29,158,117,0.12); } }
+
+body { font-family: 'Outfit', sans-serif; background: #FFFFFF; color: #111111; }
+.port { max-width: 100%; overflow-x: hidden; }
+.btn { font-family: 'Outfit', sans-serif; font-size: 12px; font-weight: 400; letter-spacing: 0.06em; padding: 9px 20px; border-radius: 2px; cursor: pointer; border: 1px solid rgba(0,0,0,0.15); background: transparent; color: rgba(0,0,0,0.7); transition: all 0.2s cubic-bezier(.4,0,.2,1); text-decoration: none; display: inline-block; }
+.btn:hover { border-color: #111; color: #111; transform: translateY(-1px); }
+.btn.primary { background: #111111; border-color: #111111; color: #FFFFFF; }
+.btn.primary:hover { background: #000; box-shadow: 0 4px 14px rgba(0,0,0,0.18); }
+.tag { font-size: 11px; padding: 3px 9px; border-radius: 2px; border: 1px solid rgba(0,0,0,0.12); color: rgba(0,0,0,0.55); transition: border-color 0.2s, color 0.2s; }
+.section-label { font-size: 10px; letter-spacing: 0.16em; text-transform: uppercase; color: rgba(0,0,0,0.35); margin: 2.5rem 0 1.25rem; display: flex; align-items: center; gap: 10px; }
+.section-label::after { content: ''; flex: 1; height: 0.5px; background: rgba(0,0,0,0.1); }
+.fade-up { opacity: 0; animation: fadeUp 0.7s ease forwards; }
+.page { display: none; }
+.page.active { display: block; animation: fadeIn 0.4s ease; }
+
+/* HEADER NAV */
+.site-nav { position: sticky; top: 0; z-index: 50; background: rgba(255,255,255,0.92); backdrop-filter: blur(8px); border-bottom: 1px solid rgba(0,0,0,0.08); padding: 1rem 2rem; display: flex; align-items: center; justify-content: space-between; }
+.site-nav .logo { font-family: 'Playfair Display', serif; font-size: 18px; font-weight: 500; cursor: pointer; }
+.site-nav .logo em { font-style: italic; color: rgba(0,0,0,0.4); }
+.site-nav .links { display: flex; gap: 1.75rem; align-items: center; }
+.site-nav a { font-size: 13px; color: rgba(0,0,0,0.6); text-decoration: none; cursor: pointer; transition: color 0.2s; }
+.site-nav a:hover { color: #111; }
+
+/* HERO */
+.hero { padding: 4rem 2rem 0; display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 3rem; align-items: center; border-bottom: 1px solid rgba(0,0,0,0.08); overflow: hidden; }
+.hero-left { padding-bottom: 4rem; }
+.hero-eyebrow { display: flex; align-items: center; gap: 8px; font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: #111; margin: 0 0 1.25rem; }
+.hero-line { width: 28px; height: 1px; background: #111; }
+.hero-name { font-family: 'Playfair Display', serif; font-size: 56px; font-weight: 400; line-height: 1.02; margin: 0 0 0.5rem; letter-spacing: -1px; }
+.hero-name em { font-style: italic; color: rgba(0,0,0,0.4); }
+.hero-tagline { font-family: 'Playfair Display', serif; font-style: italic; font-size: 18px; color: rgba(0,0,0,0.45); margin: 0 0 1.5rem; }
+.hero-bio { font-size: 15px; color: rgba(0,0,0,0.6); font-weight: 300; line-height: 1.8; max-width: 440px; margin: 0 0 2rem; }
+.hero-bottom { display: flex; align-items: center; flex-wrap: wrap; gap: 1.25rem; }
+.hero-avail { display: flex; align-items: center; gap: 7px; font-size: 12px; color: rgba(0,0,0,0.5); }
+.avail-dot { width: 7px; height: 7px; border-radius: 50%; background: #1D9E75; animation: pulseDot 2s ease-in-out infinite; }
+.hero-photo-wrap { position: relative; height: 100%; min-height: 460px; display: flex; align-items: flex-end; justify-content: center; overflow: hidden; border-radius: 4px 4px 0 0; }
+.hero-photo-wrap img { width: 100%; height: 100%; object-fit: cover; object-position: top center; filter: grayscale(1) contrast(1.05); display: block; }
+.hero-photo-caption { position: absolute; bottom: 16px; left: 16px; font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: #fff; background: rgba(0,0,0,0.55); padding: 5px 10px; border-radius: 2px; }
+
+.inner { padding: 0 2rem; max-width: 1280px; margin: 0 auto; }
+
+/* FEATURED */
+.featured { background: #FAFAFA; border: 1px solid rgba(0,0,0,0.08); border-radius: 4px; display: grid; grid-template-columns: 1fr 1.3fr; overflow: hidden; cursor: pointer; transition: border-color 0.25s, transform 0.25s, box-shadow 0.25s; }
+.featured:hover { border-color: rgba(0,0,0,0.3); transform: translateY(-2px); box-shadow: 0 14px 34px rgba(0,0,0,0.08); }
+.feat-body { padding: 1.85rem; display: flex; flex-direction: column; justify-content: space-between; }
+.feat-flag { font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase; color: #111; margin: 0 0 0.6rem; }
+.feat-title { font-family: 'Playfair Display', serif; font-size: 23px; font-weight: 400; margin: 0 0 0.75rem; line-height: 1.25; color: #111; }
+.feat-desc { font-size: 13px; color: rgba(0,0,0,0.55); font-weight: 300; line-height: 1.7; margin: 0 0 1.25rem; }
+.feat-tags { display: flex; gap: 5px; flex-wrap: wrap; margin-bottom: 1.25rem; }
+.feat-meta { display: flex; gap: 1.5rem; }
+.meta-item { display: flex; flex-direction: column; gap: 2px; }
+.meta-label { font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(0,0,0,0.3); }
+.meta-val { font-size: 13px; font-weight: 500; color: #111; }
+.feat-visual { position: relative; overflow: hidden; min-height: 260px; }
+.feat-visual img { width: 100%; height: 100%; object-fit: cover; object-position: top; display: block; transition: transform 0.5s ease; }
+.featured:hover .feat-visual img { transform: scale(1.05); }
+
+/* WORK GRID */
+.work-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 14px; }
+.case-card { background: #FAFAFA; border: 1px solid rgba(0,0,0,0.08); border-radius: 4px; overflow: hidden; cursor: pointer; transition: border-color 0.25s, transform 0.25s, box-shadow 0.25s; opacity: 0; animation: fadeUp 0.55s ease forwards; }
+.case-card:hover { border-color: rgba(0,0,0,0.3); transform: translateY(-3px); box-shadow: 0 14px 30px rgba(0,0,0,0.08); }
+.case-thumb { width: 100%; aspect-ratio: 16/10; overflow: hidden; background: #eee; }
+.case-thumb img { width: 100%; height: 100%; object-fit: cover; object-position: center top; display: block; transition: transform 0.5s ease; }
+.case-card:hover .case-thumb img { transform: scale(1.07); }
+.case-body { padding: 1rem 1.1rem; }
+.case-co { font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(0,0,0,0.3); margin: 0 0 4px; }
+.case-title { font-size: 13.5px; font-weight: 500; color: #111; margin: 0 0 8px; line-height: 1.35; }
+.tag-row { display: flex; gap: 4px; flex-wrap: wrap; }
+.case-card:nth-child(1){animation-delay:.04s} .case-card:nth-child(2){animation-delay:.08s} .case-card:nth-child(3){animation-delay:.12s}
+.case-card:nth-child(4){animation-delay:.16s} .case-card:nth-child(5){animation-delay:.20s} .case-card:nth-child(6){animation-delay:.24s}
+.case-card:nth-child(7){animation-delay:.28s} .case-card:nth-child(8){animation-delay:.32s} .case-card:nth-child(9){animation-delay:.36s}
+
+/* ABOUT */
+.about-section { background: #FAFAFA; border-top: 1px solid rgba(0,0,0,0.08); border-bottom: 1px solid rgba(0,0,0,0.08); padding: 3.5rem 2rem; }
+.about-inner { max-width: 1280px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1.4fr; gap: 2.5rem; align-items: start; }
+.about-eyebrow { font-size: 10px; letter-spacing: 0.16em; text-transform: uppercase; color: #111; margin: 0 0 1rem; }
+.about-heading { font-family: 'Playfair Display', serif; font-size: 32px; font-weight: 400; line-height: 1.15; margin: 0 0 1.5rem; color: #111; }
+.about-heading em { font-style: italic; color: rgba(0,0,0,0.4); }
+.about-right p { font-size: 14.5px; color: rgba(0,0,0,0.6); font-weight: 300; line-height: 1.85; margin: 0 0 1.75rem; }
+.skill-list { display: flex; flex-wrap: wrap; gap: 6px; }
+.skill-pill { font-size: 11.5px; padding: 4px 11px; border-radius: 2px; border: 1px solid rgba(0,0,0,0.12); color: rgba(0,0,0,0.55); transition: background 0.2s, color 0.2s, transform 0.2s; }
+.skill-pill:hover { background: #111; color: #fff; border-color: #111; transform: translateY(-1px); }
+.skill-pill.dark { background: #111; border-color: #111; color: #fff; }
+.skill-section-title { font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(0,0,0,0.3); margin: 0 0 0.75rem; }
+
+/* CONTACT */
+.contact-section { padding: 3.5rem 2rem; }
+.contact-inner { max-width: 580px; margin: 0 auto; }
+.contact-heading { font-family: 'Playfair Display', serif; font-size: 30px; font-weight: 400; margin: 0 0 1rem; line-height: 1.25; color: #111; }
+.contact-desc { font-size: 13.5px; color: rgba(0,0,0,0.55); font-weight: 300; line-height: 1.8; margin: 0 0 2rem; }
+.contact-links { display: flex; gap: 10px; flex-wrap: wrap; }
+.contact-link { display: flex; align-items: center; gap: 8px; font-size: 12px; padding: 10px 20px; border-radius: 2px; text-decoration: none; cursor: pointer; transition: all 0.2s; font-family: 'Outfit', sans-serif; letter-spacing: 0.05em; }
+.contact-link.email { background: #111; color: #fff; border: 1px solid #111; }
+.contact-link.email:hover { background: #000; box-shadow: 0 4px 14px rgba(0,0,0,0.2); transform: translateY(-1px); }
+.contact-link.linkedin, .contact-link.cv { background: transparent; color: rgba(0,0,0,0.65); border: 1px solid rgba(0,0,0,0.15); }
+.contact-link.linkedin:hover, .contact-link.cv:hover { border-color: #111; color: #111; transform: translateY(-1px); }
+.footer { padding: 1.5rem 2rem; border-top: 1px solid rgba(0,0,0,0.08); display: flex; justify-content: space-between; max-width: 1280px; margin: 0 auto; font-size: 11px; color: rgba(0,0,0,0.3); }
+
+/* CASE STUDY PAGES */
+.cs-nav { padding: 1.25rem 2rem; border-bottom: 1px solid rgba(0,0,0,0.08); display: flex; align-items: center; gap: 1rem; position: sticky; top: 0; background: rgba(255,255,255,0.95); backdrop-filter: blur(8px); z-index: 40; }
+.back-btn { display: flex; align-items: center; gap: 6px; font-size: 12px; color: #111; cursor: pointer; border: 1px solid rgba(0,0,0,0.25); background: transparent; font-family: 'Outfit', sans-serif; letter-spacing: 0.05em; padding: 6px 14px; border-radius: 2px; transition: all 0.2s cubic-bezier(.4,0,.2,1); }
+.back-btn:hover { background: #111; color: #fff; border-color: #111; transform: translateX(-2px); }
+.cs-nav-title { font-size: 12px; color: rgba(0,0,0,0.3); }
+.cs-hero { padding: 2.75rem 2rem 0; max-width: 1100px; margin: 0 auto; }
+.cs-eyebrow { font-size: 10px; letter-spacing: 0.16em; text-transform: uppercase; color: #111; margin: 0 0 0.75rem; }
+.cs-title { font-family: 'Playfair Display', serif; font-size: 38px; font-weight: 400; line-height: 1.1; margin: 0 0 1rem; letter-spacing: -0.5px; color: #111; }
+.cs-desc { font-size: 14.5px; color: rgba(0,0,0,0.6); font-weight: 300; line-height: 1.8; max-width: 620px; margin: 0 0 1.5rem; }
+.cs-tags { display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: 2rem; }
+.cs-meta-bar { display: flex; gap: 2.5rem; flex-wrap: wrap; padding: 1.5rem 2rem; border-top: 1px solid rgba(0,0,0,0.08); border-bottom: 1px solid rgba(0,0,0,0.08); max-width: 1100px; margin: 0 auto; }
+.cs-meta-item { display: flex; flex-direction: column; gap: 4px; }
+.cs-meta-label { font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(0,0,0,0.3); }
+.cs-meta-val { font-size: 14px; font-weight: 500; color: #111; }
+.cs-cover { width: 100%; }
+.cs-cover img { width: 100%; display: block; max-height: 560px; object-fit: cover; object-position: top; }
+.cs-body { padding: 0 2rem 3rem; max-width: 1100px; margin: 0 auto; }
+.cs-section { margin-top: 3rem; }
+.cs-section-title { font-family: 'Playfair Display', serif; font-size: 25px; font-weight: 400; margin: 0 0 0.75rem; color: #111; }
+.cs-section p { font-size: 14.5px; color: rgba(0,0,0,0.6); font-weight: 300; line-height: 1.8; margin: 0 0 1.5rem; }
+.cs-img { width: 100%; border-radius: 4px; display: block; margin-bottom: 1rem; border: 1px solid rgba(0,0,0,0.08); transition: transform 0.3s ease; }
+.cs-img-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 1.5rem; }
+.cs-img-grid img { width: 100%; border-radius: 4px; display: block; border: 1px solid rgba(0,0,0,0.08); }
+.cs-footer-nav { margin-top: 3rem; padding: 1.5rem 2rem; border-top: 1px solid rgba(0,0,0,0.08); display: flex; justify-content: space-between; align-items: center; max-width: 1100px; margin-left: auto; margin-right: auto; }
+
+.ps-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 1.5rem; }
+.ps-card { background: #FAFAFA; border: 1px solid rgba(0,0,0,0.08); border-radius: 4px; padding: 1.4rem; transition: transform 0.2s, box-shadow 0.2s; }
+.ps-card:hover { transform: translateY(-2px); box-shadow: 0 10px 24px rgba(0,0,0,0.06); }
+.ps-card h4 { font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: #111; margin: 0 0 0.5rem; }
+.ps-card p { font-size: 13px; color: rgba(0,0,0,0.55); font-weight: 300; line-height: 1.65; margin: 0; }
+.ps-card ul { list-style: none; padding: 0; margin: 0; }
+.ps-card li { font-size: 13px; color: rgba(0,0,0,0.55); font-weight: 300; line-height: 1.7; padding-left: 1rem; position: relative; margin-bottom: 4px; }
+.ps-card li::before { content: '—'; position: absolute; left: 0; color: rgba(0,0,0,0.3); }
+
+.persona-card { background: #FAFAFA; border: 1px solid rgba(0,0,0,0.08); border-radius: 4px; overflow: hidden; display: grid; grid-template-columns: 1fr 1.6fr; margin-bottom: 1rem; }
+.persona-img { background: #eee; min-height: 200px; overflow: hidden; }
+.persona-img img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.persona-body { padding: 1.4rem; }
+.persona-name { font-family: 'Playfair Display', serif; font-size: 19px; font-weight: 400; margin: 0 0 2px; color: #111; }
+.persona-sub { font-size: 11px; color: rgba(0,0,0,0.4); margin: 0 0 1rem; }
+.persona-section-title { font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: #111; margin: 0 0 0.4rem; }
+.persona-body p { font-size: 12.5px; color: rgba(0,0,0,0.55); font-weight: 300; line-height: 1.65; margin: 0 0 0.9rem; }
+.persona-list { list-style: none; padding: 0; margin: 0 0 0.9rem; }
+.persona-list li { font-size: 12.5px; color: rgba(0,0,0,0.55); font-weight: 300; line-height: 1.65; padding-left: 1rem; position: relative; }
+.persona-list li::before { content: '—'; position: absolute; left: 0; color: rgba(0,0,0,0.3); }
+
+.feedback-card { background: #FAFAFA; border: 1px solid rgba(0,0,0,0.08); border-left: 3px solid #111; border-radius: 4px; padding: 1.25rem 1.5rem; margin-bottom: 1rem; }
+.feedback-card p { font-size: 13px; color: rgba(0,0,0,0.6); font-weight: 300; line-height: 1.7; margin: 0; }
+
+.stat-bar { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin-bottom: 1.5rem; }
+.stat-card { background: #FAFAFA; border: 1px solid rgba(0,0,0,0.08); border-radius: 4px; padding: 1.4rem; text-align: center; transition: transform 0.2s; }
+.stat-card:hover { transform: translateY(-2px); }
+.stat-val { font-family: 'Playfair Display', serif; font-size: 26px; font-weight: 400; color: #111; margin: 0 0 4px; }
+.stat-label { font-size: 10.5px; color: rgba(0,0,0,0.4); letter-spacing: 0.05em; margin: 0; }
+
+.goals-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 1.5rem; }
+.goal-card { background: #FAFAFA; border: 1px solid rgba(0,0,0,0.08); border-radius: 4px; padding: 1.4rem; }
+.goal-card h4 { font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: #111; margin: 0 0 0.75rem; }
+.goal-list { list-style: none; padding: 0; margin: 0; }
+.goal-list li { font-size: 12.5px; color: rgba(0,0,0,0.55); font-weight: 300; line-height: 1.65; padding-left: 1rem; position: relative; margin-bottom: 6px; }
+.goal-list li::before { content: '—'; position: absolute; left: 0; color: rgba(0,0,0,0.3); }
+
+.identity-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 1.5rem; }
+.identity-card { background: #FAFAFA; border: 1px solid rgba(0,0,0,0.08); border-radius: 4px; padding: 1.4rem; }
+.identity-card h4 { font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: #111; margin: 0 0 0.5rem; }
+.identity-card p { font-size: 13px; color: rgba(0,0,0,0.55); font-weight: 300; line-height: 1.65; margin: 0; }
+
+.steps-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 12px; margin-bottom: 1.5rem; }
+.step-card { background: #FAFAFA; border: 1px solid rgba(0,0,0,0.08); border-radius: 4px; padding: 1.4rem; transition: transform 0.2s, box-shadow 0.2s; }
+.step-card:hover { transform: translateY(-2px); box-shadow: 0 10px 24px rgba(0,0,0,0.06); }
+.step-card .step-num { font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; color: #111; margin: 0 0 0.5rem; }
+.step-card h4 { font-size: 14px; font-weight: 500; color: #111; margin: 0 0 0.5rem; }
+.step-card p { font-size: 12px; color: rgba(0,0,0,0.5); font-weight: 300; line-height: 1.6; margin: 0; }
+
+.process-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 1rem; }
+.process-card { background: #FAFAFA; border: 1px solid rgba(0,0,0,0.08); border-radius: 4px; padding: 1.4rem; }
+.process-card .step { font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; color: #111; margin: 0 0 0.4rem; }
+.process-card h4 { font-size: 14px; font-weight: 500; color: #111; margin: 0 0 0.6rem; }
+.process-card p { font-size: 12px; color: rgba(0,0,0,0.5); font-weight: 300; line-height: 1.6; margin: 0; }
+
+@media (max-width: 900px) {
+  .hero { grid-template-columns: 1fr; }
+  .hero-photo-wrap { min-height: 320px; order: -1; }
+  .about-inner { grid-template-columns: 1fr; }
+  .work-grid { grid-template-columns: 1fr 1fr; }
+  .featured { grid-template-columns: 1fr; }
+  .ps-grid, .identity-grid, .goals-grid, .process-grid, .cs-img-grid { grid-template-columns: 1fr; }
+  .steps-grid { grid-template-columns: 1fr; }
+  .stat-bar { grid-template-columns: 1fr 1fr; }
+  .persona-card { grid-template-columns: 1fr; }
+}
+@media (max-width: 600px) {
+  .work-grid { grid-template-columns: 1fr; }
+  .hero-name { font-size: 38px; }
+}
+</style>
 </head>
-
 <body>
-    <header class="header clearfix">
-        <div class="container">
-            <div class="row">
-                <div class="col-sm-12 col-md-2 d-flex justify-content-center ">
-                    <img class="profile-image img-responsive" src="images/temi-pic.jpg" height="150px" width="150px" alt="Adekeye temlade's image" />
 
-                </div>
-                <div class="col-sm-12 col-md-8 mr-md-auto d-flex flex-column align-items-md-start align-items-sm-center  profile_name">
-                    <h1><strong>Adekeye Temilade</strong></h1>
-                    <h2>Front-end Developer & UI/UX Desiner</h2>
-                    <ul class="social list-inline">
-                        <li><a href="https://twitter.com/temilad28433803"><i class="fa fa-twitter"></i></a></li>
-                        <li><a href="https://www.linkedin.com/in/temi-adekeye-328881168/"><i class="fa fa-linkedin"></i></a></li>
-                        <li><a href="https://github.com/crownics"><i class="fa fa-github-alt"></i></a></li>
-                        <li><a href="https://gitlab.com/crownics"><i class="fa fa-gitlab"></i></a></li>
-                    </ul>
-                    <div class="align-middle btn-wrapper" >
-                        <button class="btn btn-secondary"><i class="fa fa-paper-plane"></i><a href="mailto:temiladeadekeye51@gmail.com?Subject=Mail%20to%20 enquire.">CONTACT ME</a></button>
-                    </div>
-                </div>
-            </div>
+<div class="port">
+
+  <nav class="site-nav">
+    <div class="logo" onclick="showPage('home')">Temilade <em>Adekeye</em></div>
+    <div class="links">
+      <a onclick="showPage('home')">Work</a>
+      <a href="#about-anchor" onclick="showPage('home')">About</a>
+      <a href="#contact-anchor" onclick="showPage('home')">Contact</a>
+    </div>
+  </nav>
+
+  <!-- ══════════ HOME ══════════ -->
+  <div id="home" class="page active">
+
+    <div class="hero">
+      <div class="hero-left">
+        <div class="hero-eyebrow fade-up"><div class="hero-line"></div>Product Designer<div class="hero-line"></div></div>
+        <h1 class="hero-name fade-up" style="animation-delay:.08s">Temilade <em>Adekeye</em></h1>
+        <p class="hero-tagline fade-up" style="animation-delay:.14s">Inspiring narratives through visuals.</p>
+        <p class="hero-bio fade-up" style="animation-delay:.2s">Hi, I'm a Product Designer based in the United Kingdom, focused on creating simple, intuitive experiences with a strong passion for low-code solutions and thoughtful interactions. 🚀</p>
+        <div class="hero-bottom fade-up" style="animation-delay:.26s">
+          <div class="hero-avail"><div class="avail-dot"></div>Available for new projects</div>
+          <div style="display:flex;gap:8px;">
+            <a href="https://docs.google.com/document/d/1qNjhokJ0WhAmmYKkmSEmStqkatkB7OjsjMXZN9wKNlg/edit?usp=sharing" target="_blank" class="btn">View CV ↗</a>
+            <a href="mailto:temiladeadekeye51@gmail.com" class="btn primary">Get in touch</a>
+          </div>
         </div>
-    </header>
-    <div class="container">
-        <div class="row">
-            <div class="col-md-12 mx-auto d-none d-md-block contribution-graph">
-                <img class="col-md-12 mx-auto" src="https://ghchart.rshah.org/crownics" alt="crownics's Github chart" />
-            </div>
-            <div class="col-lg-7 col-md-7 col-sm-12 col-xs-12 ">
-                <div class="about section">
-                    <h2>Introduction</h2>
-                    <div class="content">
-                        <p>A 22 years old Front-end Developer & UI/UX Desiner based in Lagos, Nigeria. Loves learning and implementing new technologies. </p>
-                        <p></p>
-                    </div>
-                </div>
-                
-                <div class="experience section">
-                    <h2>Work Experience</h2>
-                    <div class="content">
-                        <h3> <i class="fa fa-briefcase" aria-hidden="true"></i> Frontend developer & UI/UX Designer </h3>
-                        <h4> <i class="fa fa-building-o" aria-hidden="true"></i> RedSofa</h4>
-                        <p class="time"><i class="fa fa-calendar"></i>   November 2018 - Present</p>
-                        <ul>
-                            <li>Built front end web application using Angular.</li>
-                            <li>Built front end web application using handlebars.js</li>
-                            <li>Design an agile retrospective application with figma</li>
-                            <li>Design a fabric shopping system application with figma</li>
-                        </ul>
+      </div>
+      <div class="hero-photo-wrap fade-up" style="animation-delay:.1s">
+        <img src="assets/hero-photo.jpg" alt="Temilade Adekeye" />
+        <div class="hero-photo-caption">Temilade · Product Designer</div>
+      </div>
+    </div>
 
-                    </div>
-                    <div class="content">
-                        <h3> <i class="fa fa-briefcase" aria-hidden="true"></i> UI/UX(Intern)</h3>
-                        <h4> <i class="fa fa-building-o" aria-hidden="true"></i>UXERBILITY</h4>
-                        <p class="time"><i class="fa fa-calendar"></i>   July 2018 - November 2018</p>
-                        <ul>
-                            <li>Built a website using Html, Css and Bootstrap</li>
-                            <li>Built a website using Html, Css, Bootstrap and JavaScript</li>
-                            <li>Design a website For lending using Figma</li>
-                            <li>Design a saving platform using Figma</li>
-                        </ul>
-
-                    </div>
-    
-                </div>  -->
-                
-                <div class="latest section">
-                    <h2>Latest Project</h2>
-                    <div class="content row">
-                        <img class="works_image img-responsive col-md-5 col-sm-12 " src="images/noadcloud.png" height="50%" width="50%" />
-                        <div class="col-sm-12 col-md-7">
-                            <h3>Nodecloud</h3>
-                            <p>Resposive web design</p>
-                            <p>This is a cloud hosting platform.</p>
-                            <p><a href="https://www.figma.com/file/JlkptbRyMk4SfcmF5V27WVlJ/noadcloud" target="_blank" rel="noopener"><i class="fa fa-external-link"></i> Figma</a></p>
-                            <p><a href="https://github.com/crownics/noadcloud.git" target="_blank" rel="noopener"><i class="fa fa-external-link"></i> GitHub</a></p>
-                        </div>
-                    </div>   
-
-                    <div class="content row">
-                        <img class=" works_image img-responsive col-md-5 col-sm-12" alt="Uxerbility" src="images/uxerbility.png" height="50%" width="50%" />
-                        <div class="col-md-7 col-sm-12">
-                            <h3>UXERBILITY</h3>
-                            <p>Web design and development for a user experience personel</p>
-                            <p>Design with figma and translated with HTML5, CSS3 and Boostrap3</p>
-                            <p><a href="https://www.figma.com/file/LWzxZSrq2keY5UpPcgQnYrDN/Uxerbility"><i class="fa fa-external-link" target="_blank" rel="noopener"></i> Figma</a></p>
-                            <p><a href="http://uxerbility.com" target="_blank" rel="noopener"><i class="fa fa-external-link"></i> uxerbilty</a></p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="project section">
-                    <h2>Other Projects</h2>
-
-                    <div class="content row">
-                        <img class="works_image img-responsive col-md-5 col-sm-12" alt="Loftystacks" src="images/loftystacks.png" height="50%" width="50%" />
-                        <div class="col-md-7 col-sm-12">
-                            <h3>Loftystacks</h3>
-                            <p>A digital product agency</p>
-                            <p>Design with figma and translated with HTML5, CSS3 and Boostrap3</p>
-                            <p><a href="https://www.figma.com/file/JOvivOQCslAy8ktCLRYQEXqY/loftystackslabs"><i class="fa fa-external-link" target="_blank" rel="noopener"></i>Figma</a></p>
-                            <p><a href="https://github.com/crownics/project2.git" target="_blank" rel="noopener"><i class="fa fa-external-link"></i> GitHub</a></p>
-                        </div>
-                    </div>
-                    
-                    <div class="content row">
-                        <img class="works_image img-responsive col-md-5 col-sm-12" alt="TRENDIES" src="images/landing page.png" height="50%" width="50%" />
-                        <div class="col-md-7 col-sm-12">
-                            <h3>TRENDIES</h3>
-                            <p>Clothing and Fashion platform</p>
-                            <p><a href="https://www.figma.com/file/Rofho85As5FLLD8MdiY83xFm/clothing-design?node-id=0%3A1"><i class="fa fa-external-link" target="_blank" rel="noopener"></i>Figma</a></p>
-                            <p><a href="https://github.com/MyloCarson/NewsApp" target="_blank" rel="noopener"><i class="fa fa-external-link"></i>GitHub</a></p>
-                        </div>
-                    </div>
-                    
-                    <div class="content row">
-                        <img class="works_image img-responsive col-md-5 col-sm-12" alt="Banner" src="images/Frame.png" height="100%" width="50%" />
-                        <div class="col-md-7 col-sm-12">
-                            <h3>Web banner for website</h3>
-                            <p>Created using figma</p>
-                            <p><a href="https://www.figma.com/file/gXi9x7SNvBx5uevbi3Y4ekWc/Untitled?node-id=46%3A2" target="_blank" rel="noopener" ><i class="fa fa-external-link"></i> Figma</a></p>
-                        </div>
-                    </div>
-                    <div class="content row">
-                        <img class="works_image img-responsive col-md-5 col-sm-12" alt="jobelin" src="images/jobelin.png" height="100%" width="50%" />
-                        <div class="col-md-7 col-sm-12">
-                            <h3>website for lending</h3>
-                            <p>written with html and css</p>
-                            <p><a href="https://github.com/crownics/temi-project" target="_blank" rel="noopener" ><i class="fa fa-external-link"></i> GitHub</a></p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-lg-5 col-md-5 col-sm-12 col-xs-12">
-                <aside class="clearfix">
-                    <h2 class="sr-only">Basic Information</h2>
-                    <div class="row">
-                        <ul class="col list-unstyled">
-                            <li class="col"><i class="fa fa-map-marker"></i><span class="sr-only">Location:</span> Lagos, Nigeria.</li>
-                            <li class="col"><i class="fa fa-envelope-o"></i><span class="sr-only">Email:</span><a href="mailto:temiladeadekeye51@gmail.com?Subject=Mail%20to%20enquire.">temiladeadekeye51@gmail.com</a></li>
-                            </ul>
-                    </div>
-                    <div class="col">
-                        <ul class="row list-unstyled">
-                            <li class="col"><i class="fa fa-link"></i><span class="sr-only">GitHub:</span><a href="https://github.com/crownics">GitHub</a></li>
-                            <li class="col"><i class="fa fa-link"></i><span class="sr-only">Gitlab:</span><a href="https://gitlab.com/crownics">GitLab</a></li>
-                            <li class="col"><i class="fa fa-linkedin"></i><span class="sr-only">Linkedln:</span><a href="https://www.linkedin.com/in/temi-adekeye-328881168/">Linkedln</a></li>
-                            <li class="col"><i class="fa fa-twitter"></i><span class="sr-only">Twitter:</span><a href="https://twitter.com/temilad28433803">Twitter</a></li>
-                        </ul>
-                    </div>
-                </aside>
-
-                <aside>
-                    <h2 class="sr-only">Skills</h2>
-                    <h3>Skills</h3>
-                        <div class="skill-content">
-                            <div>
-                                <p>HTML5 &amp; CSS3</p><span class="level">Intermediate</span></div>
-                            <div class="progress">
-                                <div class="progress-bar progress-bar-striped progress-bar-animated" style="width:80%"></div>
-                            </div>
-                        </div>
-
-                        <div class="skill-content">
-                            <div>
-                                <p>Sketch</p> <span class="level">Intermediate</span></div>
-                            <div class="progress">
-                                <div class="progress-bar progress-bar-striped progress-bar-animated" style="width:60%"></div>
-                            </div>
-
-                        </div>
-
-                        <div class="skill-content">
-                            <div>
-                                <p>Boostrap3</p> <span class="level">Intermediate</span></div>
-                            <div class="progress">
-                                <div class="progress-bar progress-bar-striped progress-bar-animated" style="width:70%"></div>
-                            </div>
-
-                        </div>
-                        <div class="skill-content">
-                            <div>
-                                <p>JavaScript &amp; Angular</p><span class="level">Intermediate</span></div>
-                            <div class="progress">
-                                <div class="progress-bar progress-bar-striped progress-bar-animated" style="width:70%"></div>
-                            </div>
-
-                        </div>
-
-                        <div class="skill-content">
-                            <div>
-                                <p>Figma</p><span class="level">Intermediate</span></div>
-                            <div class="progress">
-                                <div class="progress-bar progress-bar-striped progress-bar-animated" style="width:80%"></div>
-                            </div>
-
-                        </div>
-                </aside>
-
-                <aside>
-                    <h2>Education</h2>
-                    <div class="education_item">
-                        <p><i class="fa fa-graduation-cap"></i> Secondary School certification</p>
-                        <p class="university">Issa Williams Memorial High School (2007-2013)</span></p>
-                    </div>
-                </aside>
-
-                <aside>
-                    <h2>Languages</h2>
-                    <div class="row langauge_item">
-                        <p class="col-md-5 col-sm-12">English  <span class="mx-md-2">Native Speaker</span></p>
-                        <div class="col-md-5 col-sm-12 mx-md-n4 rating-star">
-                            <span class="fa fa-star checked"></span>
-                            <span class="fa fa-star checked"></span>
-                            <span class="fa fa-star checked"></span>
-                            <span class="fa fa-star checked"></span>
-                            <span class="fa fa-star checked"></span>
-                        </div>
-                    </div>
-                    <div class="row langauge_item">
-                        <p class="col-md-5 col-sm-12">Yoruba  <span class="mx-md-2">Native Speaker</span></p>
-                        <div class="col-md-5 col-sm-12 mx-md-n4 rating-star">
-                            <span class="fa fa-star checked"></span>
-                            <span class="fa fa-star checked"></span>
-                            <span class="fa fa-star checked"></span>
-                            <span class="fa fa-star "></span>
-                            <span class="fa fa-star "></span>
-                        </div>
-                    </div>
-                </aside>
-                
-
+    <div class="inner">
+      <p class="section-label">Featured project</p>
+      <div class="featured" onclick="showPage('snappay')">
+        <div class="feat-body">
+          <div>
+            <p class="feat-flag">Case study · Featured</p>
+            <h2 class="feat-title">All-in-One Digital Wallet for Smart Payments.</h2>
+            <p class="feat-desc">Join trusted savings groups, store money safely, and handle your everyday payments without stress. Everything you need to manage your money, simple and transparent.</p>
+            <div class="feat-tags"><span class="tag">B2C</span><span class="tag">Fintech</span><span class="tag">Brand Guidelines</span></div>
+          </div>
+          <div class="feat-meta">
+            <div class="meta-item"><span class="meta-label">Client</span><span class="meta-val">Snappay.ng</span></div>
+            <div class="meta-item"><span class="meta-label">Year</span><span class="meta-val">2026</span></div>
+            <div class="meta-item"><span class="meta-label">Platform</span><span class="meta-val">Mobile</span></div>
+          </div>
         </div>
+        <div class="feat-visual"><img src="assets/Frame_30.png" alt="Snappay" /></div>
+      </div>
+
+      <p class="section-label">Selected work</p>
+      <div class="work-grid">
+        <div class="case-card" onclick="showPage('vegaz')"><div class="case-thumb"><img src="assets/vegaz_1.png" alt="Vegaz"/></div><div class="case-body"><p class="case-co">B2C · Event · Vegaz</p><p class="case-title">Hang with your kind on Vegaz.</p><div class="tag-row"><span class="tag">B2C</span><span class="tag">Mobile</span><span class="tag">Event</span></div></div></div>
+        <div class="case-card" onclick="showPage('zoldtyme')"><div class="case-thumb"><img src="assets/Frame_427318934.png" alt="Zoldtyme"/></div><div class="case-body"><p class="case-co">CleanTech · Hungary</p><p class="case-title">Transforming Waste into Value. Creating a Cleaner Future.</p><div class="tag-row"><span class="tag">Mobile</span><span class="tag">B2C</span><span class="tag">CleanTech</span></div></div></div>
+        <div class="case-card" onclick="showPage('prism')"><div class="case-thumb"><img src="assets/Frame_7490.png" alt="Prism"/></div><div class="case-body"><p class="case-co">PropTech · Nigeria</p><p class="case-title">Real Estate Management Platform for Ikoyi Lagoons.</p><div class="tag-row"><span class="tag">B2B</span><span class="tag">B2C</span><span class="tag">Web</span></div></div></div>
+        <div class="case-card" onclick="showPage('fintrack')"><div class="case-thumb"><img src="assets/Frame_1.png" alt="Fintrack"/></div><div class="case-body"><p class="case-co">Fintech · SaaS · Purplegate Technologies</p><p class="case-title">Business Financial Tracker for SMEs.</p><div class="tag-row"><span class="tag">B2B</span><span class="tag">SaaS</span><span class="tag">Web</span></div></div></div>
+        <div class="case-card" onclick="showPage('lwc')"><div class="case-thumb"><img src="assets/LWC_1.png" alt="LWC"/></div><div class="case-body"><p class="case-co">Leisure · Lagos Water Craft</p><p class="case-title">Recreational Water Activities Bookings Experience.</p><div class="tag-row"><span class="tag">B2C</span><span class="tag">Mobile</span><span class="tag">Leisure</span></div></div></div>
+        <div class="case-card" onclick="showPage('genzaar')"><div class="case-thumb"><img src="assets/Frame_8263.png" alt="Genzaar"/></div><div class="case-body"><p class="case-co">Edtech · B2B & B2C</p><p class="case-title">Financial Education and Inclusion For All.</p><div class="tag-row"><span class="tag">Website</span><span class="tag">Edtech</span><span class="tag">B2B</span></div></div></div>
+        <div class="case-card" onclick="showPage('linqit')"><div class="case-thumb"><img src="assets/Linqit_1.png" alt="Linqit"/></div><div class="case-body"><p class="case-co">Fintech · Linqit Finance</p><p class="case-title">The cheap, easy and fast way to make borderless transactions.</p><div class="tag-row"><span class="tag">B2C</span><span class="tag">Mobile</span><span class="tag">Fintech</span></div></div></div>
+        <div class="case-card" onclick="showPage('keepevery')"><div class="case-thumb"><img src="assets/Keepevery_1.png" alt="Keepevery"/></div><div class="case-body"><p class="case-co">B2B · SaaS · Business Management</p><p class="case-title">Customer Communication Platform.</p><div class="tag-row"><span class="tag">B2B</span><span class="tag">SaaS</span><span class="tag">Web</span></div></div></div>
+        <div class="case-card" onclick="showPage('campushire')"><div class="case-thumb"><img src="assets/CampusHire_1.png" alt="CampusHire"/></div><div class="case-body"><p class="case-co">B2B & B2C · Employment System</p><p class="case-title">Student Employment System.</p><div class="tag-row"><span class="tag">B2B</span><span class="tag">B2C</span><span class="tag">SaaS</span></div></div></div>
+      </div>
+    </div>
+
+    <div class="about-section" id="about-anchor">
+      <div class="about-inner">
+        <div class="about-left">
+          <p class="about-eyebrow">About me</p>
+          <h2 class="about-heading">Design shaped by<br><em>empathy &amp; purpose.</em></h2>
+        </div>
+        <div class="about-right">
+          <p>My design journey is driven by innovation, creativity, and a passion for solving real user problems. I combine aesthetics with functionality, using empathy and user-centered thinking to create intuitive digital experiences that deliver meaningful impact and lasting value.</p>
+          <p class="skill-section-title">Expertise</p>
+          <div class="skill-list">
+            <span class="skill-pill dark">Low-code / No-code</span><span class="skill-pill dark">Interaction design</span><span class="skill-pill">UX research</span><span class="skill-pill">Product strategy</span><span class="skill-pill">Design systems</span><span class="skill-pill">Figma</span><span class="skill-pill">Framer</span><span class="skill-pill">Prototyping</span><span class="skill-pill">Usability testing</span><span class="skill-pill">Visual storytelling</span><span class="skill-pill">Problem solving</span><span class="skill-pill">Critical thinking</span><span class="skill-pill">Communication</span><span class="skill-pill">Collaboration</span><span class="skill-pill">WordPress</span><span class="skill-pill">Canva</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="contact-section" id="contact-anchor">
+      <div class="contact-inner">
+        <p class="section-label" style="margin-top:0;">Let's work together</p>
+        <h2 class="contact-heading">Let's create something<br>meaningful together.</h2>
+        <p class="contact-desc">Passionate about solving complex problems and creating impactful digital experiences, I combine creativity, strategy, and user-centered design to build products that deliver real value. Let's create something meaningful together.</p>
+        <div class="contact-links">
+          <a href="mailto:temiladeadekeye51@gmail.com" class="contact-link email">Get in touch</a>
+          <a href="https://www.linkedin.com/in/temi-adekeye-328881168/" target="_blank" class="contact-link linkedin">LinkedIn ↗</a>
+          <a href="https://docs.google.com/document/d/1qNjhokJ0WhAmmYKkmSEmStqkatkB7OjsjMXZN9wKNlg/edit?usp=sharing" target="_blank" class="contact-link cv">View CV ↗</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer"><span>Temilade Adekeye · 2025</span><span>Inspiring narratives through visuals.</span></div>
+  </div>
+
+  <!-- ══════════ SNAPPAY ══════════ -->
+  <div id="snappay" class="page">
+    <div class="cs-nav"><button class="back-btn" onclick="showPage('home')">← Back to work</button><span class="cs-nav-title">/ Snappay</span></div>
+    <div class="cs-hero">
+      <p class="cs-eyebrow">Case study · Fintech · B2C · Mobile</p>
+      <h1 class="cs-title">All-in-One Digital Wallet<br>for Smart Payments.</h1>
+      <p class="cs-desc">The platform enables users to join trusted savings groups, securely store funds, and manage everyday payments with ease. Designed for simplicity and transparency, it brings essential financial tools into one seamless experience, reducing friction and empowering users to take control of their money with confidence.</p>
+      <div class="cs-tags"><span class="tag">B2C</span><span class="tag">Fintech</span><span class="tag">Brand Guidelines</span><span class="tag">Mobile</span></div>
+    </div>
+    <div class="cs-meta-bar">
+      <div class="cs-meta-item"><span class="cs-meta-label">Client</span><span class="cs-meta-val">Snappay.ng</span></div>
+      <div class="cs-meta-item"><span class="cs-meta-label">Role</span><span class="cs-meta-val">Lead Product Designer</span></div>
+      <div class="cs-meta-item"><span class="cs-meta-label">Year</span><span class="cs-meta-val">2026</span></div>
+      <div class="cs-meta-item"><span class="cs-meta-label">Platform</span><span class="cs-meta-val">Mobile</span></div>
+    </div>
+    <div class="cs-cover"><img src="assets/Frame_30.png" alt="Snappay cover"/></div>
+    <div class="cs-body">
+      <div class="cs-section">
+        <p class="section-label">Personas</p>
+        <h2 class="cs-section-title">Understanding the Users</h2>
+        <p>Created personas for the target market — working-class people, middle-aged market women, and university students — to ground design decisions in real user needs and behaviours.</p>
+        <div class="persona-card">
+          <div class="persona-img"><img src="assets/Frame_35.png" alt="Sarah Adeyemi persona"/></div>
+          <div class="persona-body">
+            <p class="persona-name">Sarah Adeyemi</p>
+            <p class="persona-sub">31 Years old · Lagos, Nigeria</p>
+            <p class="persona-section-title">Background</p>
+            <p>A market woman in Balogung, Lagos with a small business who needs a wallet to send and receive money, and manage profit savings by thrifting with other market women.</p>
+            <p class="persona-section-title">Goals</p>
+            <ul class="persona-list"><li>Create invoices to receive money from customers</li><li>Create thrift contributions with other market women</li><li>Send money to family and friends</li></ul>
+            <p class="persona-section-title">Pain Points</p>
+            <ul class="persona-list"><li>Couldn't receive money from customers easily</li><li>Daily thrift collector couldn't account for savings</li><li>Couldn't send out money easily</li></ul>
+          </div>
+        </div>
+      </div>
+      <div class="cs-section"><p class="section-label">User Flow</p><h2 class="cs-section-title">Mapping the Journey</h2><p>The user flow outlines the end-to-end journey of creating a group thrift savings plan — from setup and member addition to scheduling collections. It highlights key interaction points, enabling a smoother, more intuitive user experience.</p><img class="cs-img" src="assets/Frame_6.png" alt="User flow diagram"/></div>
+      <div class="cs-section"><p class="section-label">Wireframes</p><h2 class="cs-section-title">Structuring the Experience</h2><p>Wireframes define the core structure and layout of the Snappay mobile app, mapping key screens and user interactions. They provide a clear blueprint for validating usability and guiding the transition into high-fidelity design.</p><img class="cs-img" src="assets/Frame_7.png" alt="Wireframes"/></div>
+      <div class="cs-section"><p class="section-label">Design System</p><h2 class="cs-section-title">Visual Design Style Guide</h2><p>The Snappay interface is designed for clarity and ease of use, with a clean layout and strong visual hierarchy that supports intuitive navigation and enhances user engagement. Built on Fakt Pro with a bold primary blue (#261FB3) and vibrant accent palette.</p><img class="cs-img" src="assets/Frame_31.png" alt="Visual design style guide"/></div>
+      <div class="cs-section"><p class="section-label">Final Design</p><h2 class="cs-section-title">Final Screens</h2><p>The final mobile designs reflect a clean, accessible interface that puts core actions — sending money, joining savings groups, and event ticketing — front and centre.</p><img class="cs-img" src="assets/Frame_34.png" alt="Final mobile screens"/></div>
+    </div>
+    <div class="cs-footer-nav"><button class="back-btn" onclick="showPage('home')">← Back to all work</button><button class="back-btn" onclick="showPage('vegaz')">Next project →</button></div>
+  </div>
+
+  <!-- ══════════ VEGAZ ══════════ -->
+  <div id="vegaz" class="page">
+    <div class="cs-nav"><button class="back-btn" onclick="showPage('home')">← Back to work</button><span class="cs-nav-title">/ Vegaz</span></div>
+    <div class="cs-hero">
+      <p class="cs-eyebrow">Case study · B2C · Mobile App · Event</p>
+      <h1 class="cs-title">Hang with your kind<br>on Vegaz.</h1>
+      <p class="cs-desc">Vegaz is your superpower for making friends and having a blast. It helps people meet others through meaningful experiences — find your crew, plan epic activities, and create memories that last a lifetime.</p>
+      <div class="cs-tags"><span class="tag">B2C</span><span class="tag">Mobile App</span><span class="tag">Event</span></div>
+    </div>
+    <div class="cs-meta-bar">
+      <div class="cs-meta-item"><span class="cs-meta-label">Client</span><span class="cs-meta-val">vegazapp.com</span></div>
+      <div class="cs-meta-item"><span class="cs-meta-label">Role</span><span class="cs-meta-val">Product Designer</span></div>
+      <div class="cs-meta-item"><span class="cs-meta-label">Year</span><span class="cs-meta-val">2025</span></div>
+      <div class="cs-meta-item"><span class="cs-meta-label">Platform</span><span class="cs-meta-val">Mobile</span></div>
+    </div>
+    <div class="cs-cover"><img src="assets/vegaz_1.png" alt="Vegaz cover"/></div>
+    <div class="cs-body">
+      <div class="cs-section">
+        <p class="section-label">How It Works</p>
+        <h2 class="cs-section-title">Hang With Your Kind</h2>
+        <p>With all kinds of people on Vegaz, it's all about getting together with people who share similar interests with you — all in three easy steps.</p>
+        <div class="steps-grid">
+          <div class="step-card"><p class="step-num">Step 1</p><h4>Browse hangout</h4><p>A rich timeline of interesting hangouts, you are never short of places to go.</p></div>
+          <div class="step-card"><p class="step-num">Step 2</p><h4>Join group chat</h4><p>Build connections and ditch the social awkwardness that comes from meeting people for the first time.</p></div>
+          <div class="step-card"><p class="step-num">Step 3</p><h4>Meet in real life</h4><p>Meet up with your kind of people through memorable experiences and have a blast doing it.</p></div>
+        </div>
+        <img class="cs-img" src="assets/vegaz_2.png" alt="How it works"/>
+      </div>
+      <div class="cs-section"><p class="section-label">Marketing & Growth</p><h2 class="cs-section-title">Find Your Tribe</h2><p>Whether you already have a community or you're looking to build one, Vegaz has everything you need to grow. The landing page leans into urgency: "80% of young people spend most of their lives planning to live life. Don't be a part of the statistics — live life now."</p><img class="cs-img" src="assets/vegaz_3.png" alt="Find your tribe, get the app"/></div>
+      <div class="cs-section"><p class="section-label">Design System</p><h2 class="cs-section-title">Components & Identity</h2><p>A playful, energetic brand identity built around vibrant purple and pink, status bars for both light and dark modes, button states, navigation bar variants, and category tags — all designed to feel social and fun rather than corporate.</p><img class="cs-img" src="assets/vegaz_4.png" alt="Design system"/></div>
+      <div class="cs-section"><p class="section-label">Final Screens</p><h2 class="cs-section-title">Browse, Join, Create, Meet</h2><p>The core experience flows from browsing hangouts, to seeing who's coming, joining group chats, creating your own hangout as a host, and finally meeting in real life — a complete loop from discovery to memory-making.</p><img class="cs-img" src="assets/vegaz_5.png" alt="App store screens"/></div>
+    </div>
+    <div class="cs-footer-nav"><button class="back-btn" onclick="showPage('snappay')">← Previous project</button><button class="back-btn" onclick="showPage('zoldtyme')">Next project →</button></div>
+  </div>
+
+  <!-- ══════════ ZOLDTYME ══════════ -->
+  <div id="zoldtyme" class="page">
+    <div class="cs-nav"><button class="back-btn" onclick="showPage('home')">← Back to work</button><span class="cs-nav-title">/ Zoldtyme</span></div>
+    <div class="cs-hero">
+      <p class="cs-eyebrow">Case study · CleanTech · Mobile</p>
+      <h1 class="cs-title">Transforming Waste into Value.<br>Creating a Cleaner Future.</h1>
+      <p class="cs-desc">ZoldTyme is an innovative mobile platform designed to streamline plastic bottle recycling across Hungary. The platform enables users to easily schedule pickup requests, earn instant credits upon successful collections, and redeem their rewards through flexible payout options. By combining convenience, incentives, and smart logistics, ZoldTyme aims to make recycling more accessible, rewarding, and impactful.</p>
+      <div class="cs-tags"><span class="tag">B2C</span><span class="tag">CleanTech</span><span class="tag">Mobile</span><span class="tag">Brand Identity</span></div>
+    </div>
+    <div class="cs-meta-bar">
+      <div class="cs-meta-item"><span class="cs-meta-label">Client</span><span class="cs-meta-val">Zoldtyme</span></div>
+      <div class="cs-meta-item"><span class="cs-meta-label">Role</span><span class="cs-meta-val">Product Designer</span></div>
+      <div class="cs-meta-item"><span class="cs-meta-label">Platform</span><span class="cs-meta-val">Mobile</span></div>
+      <div class="cs-meta-item"><span class="cs-meta-label">Market</span><span class="cs-meta-val">Hungary</span></div>
+    </div>
+    <div class="cs-cover"><img src="assets/Frame_9.png" alt="Zoldtyme cover"/></div>
+    <div class="cs-body">
+      <div class="cs-section"><p class="section-label">Overview</p><h2 class="cs-section-title">About the Platform</h2><p>ZoldTyme includes a dedicated driver portal for real-time pickup confirmations and a robust admin dashboard that manages logistics, credit distribution, payouts, and performance analytics. Users schedule pickups, earn instant credits, and redeem rewards — making recycling both rewarding and effortless.</p><img class="cs-img" src="assets/Frame_427318937.png" alt="Zoldtyme app in use"/></div>
+      <div class="cs-section">
+        <p class="section-label">Visual Identity</p>
+        <h2 class="cs-section-title">Typography & Colours</h2>
+        <p>The visual identity balances sustainability with energy — a deep forest green anchors the brand in nature, while neon green brings momentum and action. Noto Sans JP was chosen for its modern clarity, easy readability, and clean urban mobility aesthetic.</p>
+        <div class="identity-grid">
+          <div class="identity-card"><h4>Typography</h4><p>Noto Sans JP — chosen for its modern clarity and easy readability, ensuring the interface feels approachable even on the go.</p></div>
+          <div class="identity-card"><h4>Colour Palette</h4><p>Forest green (#197040) grounds the brand in sustainability. Neon green (#A7CF3B) brings energy. Teal (#64D7D4) adds a calm, refreshing accent.</p></div>
+        </div>
+        <img class="cs-img" src="assets/Frame_12.png" alt="Typography and colours"/>
+      </div>
+      <div class="cs-section"><p class="section-label">Design System</p><h2 class="cs-section-title">Building the System</h2><p>The design system uses modular cards and rounded buttons, creating a consistent look and feel across every screen — from plastic type selection to pickup mapping and payout tracking.</p><img class="cs-img" src="assets/Frame_14.png" alt="Design system"/></div>
+      <div class="cs-section"><p class="section-label">Final Design</p><h2 class="cs-section-title">Final Screens</h2><p>The final mobile designs guide users through scheduling a pickup, selecting plastic types, tracking the driver in real time, and viewing earned credits — all in a clean, minimal interface.</p><img class="cs-img" src="assets/Frame_427318935.png" alt="Mobile final screens"/></div>
+    </div>
+    <div class="cs-footer-nav"><button class="back-btn" onclick="showPage('vegaz')">← Previous project</button><button class="back-btn" onclick="showPage('prism')">Next project →</button></div>
+  </div>
+
+  <!-- ══════════ PRISM ══════════ -->
+  <div id="prism" class="page">
+    <div class="cs-nav"><button class="back-btn" onclick="showPage('home')">← Back to work</button><span class="cs-nav-title">/ Prism — Ikoyi Lagoons</span></div>
+    <div class="cs-hero">
+      <p class="cs-eyebrow">Case study · PropTech · B2B & B2C · Web</p>
+      <h1 class="cs-title">Real Estate Management<br>Platform.</h1>
+      <p class="cs-desc">The Ikoyi Lagoons platform streamlines the full customer journey — from lead capture and KYC to sales, payments, and ongoing engagement. It features automated sales management, customer and agent portals, payment tracking, real-time analytics, and role-based access, all designed to improve operational efficiency and support secure, seamless user experiences.</p>
+      <div class="cs-tags"><span class="tag">B2B</span><span class="tag">B2C</span><span class="tag">Web</span><span class="tag">PropTech</span><span class="tag">Dashboard</span></div>
+    </div>
+    <div class="cs-meta-bar">
+      <div class="cs-meta-item"><span class="cs-meta-label">Client</span><span class="cs-meta-val">Ikoyi Lagoons</span></div>
+      <div class="cs-meta-item"><span class="cs-meta-label">Product</span><span class="cs-meta-val">Prism</span></div>
+      <div class="cs-meta-item"><span class="cs-meta-label">Role</span><span class="cs-meta-val">Product Designer</span></div>
+      <div class="cs-meta-item"><span class="cs-meta-label">Year</span><span class="cs-meta-val">2025</span></div>
+      <div class="cs-meta-item"><span class="cs-meta-label">Platform</span><span class="cs-meta-val">Web</span></div>
+    </div>
+    <div class="cs-cover"><img src="assets/Frame_7490.png" alt="Prism cover"/></div>
+    <div class="cs-body">
+      <div class="cs-section"><p class="section-label">Product Users</p><h2 class="cs-section-title">Who is it for?</h2><p>The Ikoyi Lagoons platform is designed for high-value property investors — primarily adults aged 50 and above seeking a seamless and secure real estate investment experience. It also caters to businesses and entrepreneurs looking to acquire commercial spaces such as offices, retail shops, gyms, recreational centres, and other essential facilities.</p><img class="cs-img" src="assets/Frame_7491.png" alt="Product users"/></div>
+      <div class="cs-section"><p class="section-label">Journey Map</p><h2 class="cs-section-title">The User Journey</h2><p>The core journey maps five key steps — from exploring properties to making payments — ensuring users can navigate the platform with confidence and minimal friction.</p><img class="cs-img" src="assets/Frame_7497.png" alt="Journey map"/></div>
+      <div class="cs-section">
+        <p class="section-label">Design System</p>
+        <h2 class="cs-section-title">Typography & Colours</h2>
+        <p>Built on Inter for its neutral legibility and professional clarity. The primary teal (#006666) anchors trust and nature, while a secondary blue-violet (#617ECC) adds depth across the UI system.</p>
+        <div class="identity-grid">
+          <div class="identity-card"><h4>Typography</h4><p>Inter — Semibold for headings (48px), Medium for subheadings (18–32px), Regular for body text (12–16px). Clean and highly legible at every scale.</p></div>
+          <div class="identity-card"><h4>Colour Palette</h4><p>Primary teal #006666, Secondary #617ECC, Success #1F9A61, Caution #CC903F, Danger #AB263C — a complete semantic system.</p></div>
+        </div>
+        <div class="cs-img-grid"><img src="assets/Frame_7492.png" alt="Typography"/><img src="assets/Frame_7493.png" alt="Colour palette"/></div>
+      </div>
+      <div class="cs-section"><p class="section-label">Low Fidelity</p><h2 class="cs-section-title">Wireframes</h2><p>Low-fidelity wireframes mapped out the CRM admin portal — including the dashboard, investor management, project listings, agent tracking, and transaction views — validating structure before moving to high fidelity.</p><img class="cs-img" src="assets/Frame_7494.png" alt="Low fidelity wireframes"/></div>
+      <div class="cs-section"><p class="section-label">Final Design</p><h2 class="cs-section-title">UI Design</h2><p>The final UI covers both the customer-facing Ikoyi Lagoons portal and the Prism admin CRM — with property browsing, offer requests, payment tracking, investor management, agent oversight, and real-time analytics all built into a cohesive system.</p><img class="cs-img" src="assets/Frame_7495.png" alt="Final UI design"/></div>
+    </div>
+    <div class="cs-footer-nav"><button class="back-btn" onclick="showPage('zoldtyme')">← Previous project</button><button class="back-btn" onclick="showPage('fintrack')">Next project →</button></div>
+  </div>
+
+  <!-- ══════════ FINTRACK ══════════ -->
+  <div id="fintrack" class="page">
+    <div class="cs-nav"><button class="back-btn" onclick="showPage('home')">← Back to work</button><span class="cs-nav-title">/ Fintrack</span></div>
+    <div class="cs-hero">
+      <p class="cs-eyebrow">Case study · Fintech · B2B · SaaS · Web</p>
+      <h1 class="cs-title">Business Financial<br>Tracker.</h1>
+      <p class="cs-desc">The Business Finance Tracking App is designed to help small and medium-sized businesses manage their financial operations efficiently. It provides a comprehensive platform for tracking income, expenses, sales, and inventory — enabling business owners to make informed decisions and improve financial performance.</p>
+      <div class="cs-tags"><span class="tag">B2B</span><span class="tag">SaaS</span><span class="tag">Web</span><span class="tag">Fintech</span></div>
+    </div>
+    <div class="cs-meta-bar">
+      <div class="cs-meta-item"><span class="cs-meta-label">Client</span><span class="cs-meta-val">Purplegate Technologies</span></div>
+      <div class="cs-meta-item"><span class="cs-meta-label">Role</span><span class="cs-meta-val">Product Designer</span></div>
+      <div class="cs-meta-item"><span class="cs-meta-label">Year</span><span class="cs-meta-val">2026</span></div>
+      <div class="cs-meta-item"><span class="cs-meta-label">Platform</span><span class="cs-meta-val">Web</span></div>
+    </div>
+    <div class="cs-cover"><img src="assets/Frame_1.png" alt="Fintrack cover"/></div>
+    <div class="cs-body">
+      <div class="cs-section">
+        <p class="section-label">Problem & Solution</p>
+        <h2 class="cs-section-title">The Challenge</h2>
+        <div class="ps-grid">
+          <div class="ps-card"><h4>Problem</h4><p>Small and medium-sized businesses often struggle to track income, expenses, sales, and staff activities efficiently. Manual processes make it difficult to generate invoices, forecast revenue, manage budgets, and detect fraudulent transactions — leading to poor financial visibility and decision-making.</p></div>
+          <div class="ps-card"><h4>Solution</h4><p>The Business Finance Tracker provides a centralised platform for managing finances, sales, staff activities, and client transactions. It automates invoicing, supports budgeting and revenue forecasting, and delivers fraud alerts — helping businesses make smarter financial decisions and improve operational efficiency.</p></div>
+        </div>
+      </div>
+      <div class="cs-section">
+        <p class="section-label">Design System</p>
+        <h2 class="cs-section-title">Typography & Colours</h2>
+        <p>Inter was chosen for its clean, professional legibility across dashboard-heavy interfaces. A vibrant purple primary (#6A42C2) drives brand recognition, supported by an energetic orange (#FF7500) and teal (#1E9092) for data visualisation and success states.</p>
+        <div class="identity-grid">
+          <div class="identity-card"><h4>Typography</h4><p>Inter Semibold (48px) for headings, Medium (18–32px) for subheadings, Regular (12–16px) for body — consistent hierarchy across all dashboard views.</p></div>
+          <div class="identity-card"><h4>Colour Palette</h4><p>Purple #6A42C2 (primary), Orange #FF7500 (accent), Teal #1E9092 (success), Amber #FFB44F (warning), Red #D62F4B (danger).</p></div>
+        </div>
+        <img class="cs-img" src="assets/Frame_8.png" alt="Design system"/>
+      </div>
+      <div class="cs-section"><p class="section-label">Dashboard</p><h2 class="cs-section-title">Core Screens</h2><p>The main dashboard gives business owners an instant overview — total customers, income, expenses, P&L, predicted budget, income forecast, and fraud alerts — all in one glance. Financial metrics are visualised as a stacked bar chart across all 12 months.</p><img class="cs-img" src="assets/Frame_7_1.png" alt="Dashboard and expense screens"/></div>
+      <div class="cs-section"><p class="section-label">Expense Tracking</p><h2 class="cs-section-title">Expense Management</h2><p>The expense tracking view allows businesses to categorise spending (employee services, rent, utilities, marketing, travel), set budgets, and monitor predicted spend against actual — with full table-level filtering and category management.</p><img class="cs-img" src="assets/Frame_9_1.png" alt="Expense tracking"/></div>
+      <div class="cs-section"><p class="section-label">Final Screens</p><h2 class="cs-section-title">Login, Mobile & Fraud Alert</h2><p>The responsive design extends to mobile — login, expense tracking, and fraud alert views are all optimised for smaller screens, ensuring business owners can monitor their finances on the go with full feature parity.</p><img class="cs-img" src="assets/Frame_10.png" alt="Login, mobile and fraud alert screens"/></div>
+    </div>
+    <div class="cs-footer-nav"><button class="back-btn" onclick="showPage('prism')">← Previous project</button><button class="back-btn" onclick="showPage('lwc')">Next project →</button></div>
+  </div>
+
+  <!-- ══════════ LWC ══════════ -->
+  <div id="lwc" class="page">
+    <div class="cs-nav"><button class="back-btn" onclick="showPage('home')">← Back to work</button><span class="cs-nav-title">/ Lagos Water Craft</span></div>
+    <div class="cs-hero">
+      <p class="cs-eyebrow">Case study · B2C · Mobile App · Leisure</p>
+      <h1 class="cs-title">Recreational Water Activities<br>Bookings Experience.</h1>
+      <p class="cs-desc">LWC Connect is a customer-facing mobile application for Lagos Water Crafts. The app digitises and enhances the customer experience for booking water-based rides, managing memberships, discovering events, and accessing services seamlessly.</p>
+      <div class="cs-tags"><span class="tag">B2C</span><span class="tag">Mobile</span><span class="tag">Leisure</span><span class="tag">Brand Identity</span></div>
+    </div>
+    <div class="cs-meta-bar">
+      <div class="cs-meta-item"><span class="cs-meta-label">Client</span><span class="cs-meta-val">Lagos Water Craft</span></div>
+      <div class="cs-meta-item"><span class="cs-meta-label">Role</span><span class="cs-meta-val">Product Designer</span></div>
+      <div class="cs-meta-item"><span class="cs-meta-label">Year</span><span class="cs-meta-val">2025</span></div>
+      <div class="cs-meta-item"><span class="cs-meta-label">Platform</span><span class="cs-meta-val">Mobile</span></div>
+    </div>
+    <div class="cs-cover"><img src="assets/LWC_1.png" alt="LWC cover"/></div>
+    <div class="cs-body">
+      <div class="cs-section">
+        <p class="section-label">Vision & Goals</p>
+        <h2 class="cs-section-title">Product Vision</h2>
+        <p>To become the primary digital platform for anyone seeking recreational and leisure water activities in Lagos — providing a seamless, secure, and engaging booking and community experience.</p>
+        <div class="goals-grid">
+          <div class="goal-card">
+            <h4>Business Goals</h4>
+            <ul class="goal-list"><li>Increase direct bookings and reduce reliance on third-party agents</li><li>Boost membership subscriptions and retention</li><li>Enhance customer engagement through event promotions</li><li>Centralise customer data and preferences for improved service delivery</li><li>Provide a modern digital interface that reflects LWC's brand quality</li></ul>
+          </div>
+          <div class="goal-card">
+            <h4>User Goals</h4>
+            <ul class="goal-list"><li>Easily discover, book, and pay for water rides (Kayak, Jet Ski, Boat Cruise)</li><li>Manage membership benefits and track usage</li><li>Stay informed about upcoming events and special offers</li><li>Access booking history and receipts</li><li>Control profile and notification preferences</li></ul>
+          </div>
+        </div>
+      </div>
+      <div class="cs-section"><p class="section-label">Home & Discovery</p><h2 class="cs-section-title">Explore Leisure Services</h2><p>Diamond membership users are greeted with their tier status and loyalty points. The home screen surfaces all available leisure services — Boat Cruise, Transportation, Kayak, Jet Ski — with clear pricing, making discovery effortless.</p><img class="cs-img" src="assets/Frame_6_1.png" alt="Home screen - leisure services"/></div>
+      <div class="cs-section"><p class="section-label">Booking Flow</p><h2 class="cs-section-title">Book Leisure Services</h2><p>Users select a service, choose their type (Instructor or Solo), set duration, and confirm their booking — all in a few taps. The booking detail screen shows the total cost in real time before confirmation.</p><img class="cs-img" src="assets/Frame_2.png" alt="Booking flow"/></div>
+      <div class="cs-section"><p class="section-label">Final Screens</p><h2 class="cs-section-title">Complete Experience</h2><p>From login and service discovery to booking, events, and downloadable receipts with QR codes — the final screens deliver a polished end-to-end experience across all core user journeys.</p><img class="cs-img" src="assets/Frame_8_1.png" alt="Full screens spread"/><img class="cs-img" src="assets/Frame_30_1.png" alt="All screens overview"/></div>
+    </div>
+    <div class="cs-footer-nav"><button class="back-btn" onclick="showPage('fintrack')">← Previous project</button><button class="back-btn" onclick="showPage('genzaar')">Next project →</button></div>
+  </div>
+
+  <!-- ══════════ GENZAAR ══════════ -->
+  <div id="genzaar" class="page">
+    <div class="cs-nav"><button class="back-btn" onclick="showPage('home')">← Back to work</button><span class="cs-nav-title">/ Genzaar</span></div>
+    <div class="cs-hero">
+      <p class="cs-eyebrow">Case study · Edtech · B2B & B2C · Website</p>
+      <h1 class="cs-title">Financial Education and<br>Inclusion For All.</h1>
+      <p class="cs-desc">The Genzaar marketing website was designed to make it easy to navigate financial educational tools that help individuals make informed financial decisions. Committed to financial inclusion, the platform ensures everyone — regardless of background or age — has access to tools that educate them on how to manage money and secure a stable future.</p>
+      <div class="cs-tags"><span class="tag">B2B</span><span class="tag">B2C</span><span class="tag">Website</span><span class="tag">Edtech</span></div>
+    </div>
+    <div class="cs-meta-bar">
+      <div class="cs-meta-item"><span class="cs-meta-label">Client</span><span class="cs-meta-val">Genzaar</span></div>
+      <div class="cs-meta-item"><span class="cs-meta-label">Role</span><span class="cs-meta-val">Product Designer</span></div>
+      <div class="cs-meta-item"><span class="cs-meta-label">Year</span><span class="cs-meta-val">2023</span></div>
+      <div class="cs-meta-item"><span class="cs-meta-label">Platform</span><span class="cs-meta-val">Web</span></div>
+    </div>
+    <div class="cs-cover"><img src="assets/Frame_8263.png" alt="Genzaar cover"/></div>
+    <div class="cs-body">
+      <div class="cs-section">
+        <p class="section-label">Impact</p>
+        <h2 class="cs-section-title">The Result</h2>
+        <p>The design process followed a results-focused approach — beginning with clear objectives, iterative brainstorming, and strategic development. Post-launch analytics and community feedback were used to measure success and refine the experience.</p>
+        <div class="stat-bar">
+          <div class="stat-card"><p class="stat-val">$20K</p><p class="stat-label">Total funds raised post-launch</p></div>
+          <div class="stat-card"><p class="stat-val">3</p><p class="stat-label">User segments served</p></div>
+          <div class="stat-card"><p class="stat-val">2023</p><p class="stat-label">Year launched</p></div>
+        </div>
+      </div>
+      <div class="cs-section">
+        <p class="section-label">Process</p>
+        <h2 class="cs-section-title">Design Approach</h2>
+        <p>The design process began with in-depth research to understand client needs and children's financial education. Creativity bloomed in the conceptualisation phase — ideas were sketched and refined before materialising in the design and development stage, with a keen focus on aesthetic cohesion and user-centric functionality. After meticulous testing, the project culminated in a strategic launch, followed by continuous iteration.</p>
+        <div class="ps-grid">
+          <div class="ps-card"><h4>Goal</h4><p>A purpose-driven methodology — comprehensive examination of children's financial education needs, iterative improvements, and equal emphasis on aesthetic allure and practical functionality.</p></div>
+          <div class="ps-card"><h4>Audience</h4><p>For individuals, businesses, and financial institutions — with dedicated segments for Next Gen (kids & teens), adults, and B2B partners like banks and fintechs.</p></div>
+        </div>
+      </div>
+      <div class="cs-section"><p class="section-label">Landing Page</p><h2 class="cs-section-title">Homepage Design</h2><p>"Financial Education and Inclusion For All" — the homepage leads with Genzaar's mission, a product explainer video, and App Store / Google Play CTAs. Clean, bold typography and a minimal layout build instant trust and clarity.</p><img class="cs-img" src="assets/iMac_Screen_Mockup_label.png" alt="Genzaar homepage on iMac"/></div>
+      <div class="cs-section"><p class="section-label">Responsive Design</p><h2 class="cs-section-title">Mobile & Desktop</h2><p>The responsive website adapts seamlessly across screen sizes — from the "Why Genzaar?" value proposition page to the "Building Strong Partnerships" B2B section, all optimised for both desktop and mobile browsers.</p><div class="cs-img-grid"><img src="assets/Iphone_11_Scene_Mockup.png" alt="Mobile - partnerships page"/><img src="assets/Iphone_11_Screen_Mockup.png" alt="Mobile - why Genzaar"/></div></div>
+      <div class="cs-section"><p class="section-label">Next Gen</p><h2 class="cs-section-title">Empowering Parents to Raise Financially Savvy Kids</h2><p>The Next Gen product page targets parents with an immersive, playful visual direction — an underwater world with a child character — communicating that financial literacy can be joyful and engaging for the next generation.</p><img class="cs-img" src="assets/Mac___Iphone_Screen_Mockup.png" alt="Next Gen desktop and mobile"/><img class="cs-img" src="assets/Mac_Screen.png" alt="Next Gen full page"/></div>
+    </div>
+    <div class="cs-footer-nav"><button class="back-btn" onclick="showPage('lwc')">← Previous project</button><button class="back-btn" onclick="showPage('linqit')">Next project →</button></div>
+  </div>
+
+  <!-- ══════════ LINQIT ══════════ -->
+  <div id="linqit" class="page">
+    <div class="cs-nav"><button class="back-btn" onclick="showPage('home')">← Back to work</button><span class="cs-nav-title">/ Linqit</span></div>
+    <div class="cs-hero">
+      <p class="cs-eyebrow">Case study · Fintech · B2C · Mobile</p>
+      <h1 class="cs-title">The cheap, easy and fast way<br>to make borderless transactions.</h1>
+      <p class="cs-desc">Linqit is a cross-border fintech mobile app designed for Africans in the diaspora — enabling cheap, fast, and easy international money transfers, bill payments, currency conversion, and peer-to-peer swaps across multiple currencies and accounts.</p>
+      <div class="cs-tags"><span class="tag">B2C</span><span class="tag">Mobile</span><span class="tag">Fintech</span><span class="tag">Cross-border</span></div>
+    </div>
+    <div class="cs-meta-bar">
+      <div class="cs-meta-item"><span class="cs-meta-label">Client</span><span class="cs-meta-val">Linqit Finance</span></div>
+      <div class="cs-meta-item"><span class="cs-meta-label">Role</span><span class="cs-meta-val">Product Designer</span></div>
+      <div class="cs-meta-item"><span class="cs-meta-label">Year</span><span class="cs-meta-val">2022</span></div>
+      <div class="cs-meta-item"><span class="cs-meta-label">Platforms</span><span class="cs-meta-val">Mobile · Web · Admin</span></div>
+    </div>
+    <div class="cs-cover"><img src="assets/Linqit_1.png" alt="Linqit cover"/></div>
+    <div class="cs-body">
+      <div class="cs-section">
+        <p class="section-label">Personas</p>
+        <h2 class="cs-section-title">Understanding the Users</h2>
+        <p>Created a persona for the target market — working-class people, single and married middle-aged Africans in the diaspora who need to send money home and manage cross-border financial accounts.</p>
+        <div class="persona-card">
+          <div class="persona-img"><img src="assets/Linqit_2.png" alt="Sarah Adeyemi persona"/></div>
+          <div class="persona-body">
+            <p class="persona-name">Sarah Adeyemi</p>
+            <p class="persona-sub">31 Years old · Newark, USA</p>
+            <p class="persona-section-title">Background</p>
+            <p>A Nigerian living in the USA with family and businesses in Nigeria that she sends money to often.</p>
+            <p class="persona-section-title">Goals</p>
+            <ul class="persona-list"><li>Send money to friends and family easily</li><li>Manage Nigeria and USA financial accounts</li><li>Pay for bills anywhere</li></ul>
+            <p class="persona-section-title">Pain Points</p>
+            <ul class="persona-list"><li>Couldn't pay for bills from anywhere</li><li>Couldn't send money to other countries' accounts</li><li>Couldn't manage all foreign financial accounts</li></ul>
+          </div>
+        </div>
+      </div>
+      <div class="cs-section"><p class="section-label">User Journey</p><h2 class="cs-section-title">Money Transfer Flow</h2><p>The user journey for money transfer maps two distinct paths — Local Transfer and International Transfer — both starting from account selection and ending with a confirmed send, with different input fields tailored to each type.</p><img class="cs-img" src="assets/Linqit_3.png" alt="User journey for money transfer"/></div>
+      <div class="cs-section"><p class="section-label">Information Architecture</p><h2 class="cs-section-title">Structuring the App</h2><p>The information architecture maps the full app structure from login — covering Home (accounts, transfer, bills, airtime, convert), Cards (view, create, options), Transactions, Peer-to-Peer (deals, swap), and More (settings, loans, customer service).</p><img class="cs-img" src="assets/Linqit_4.png" alt="Information architecture"/></div>
+      <div class="cs-section"><p class="section-label">Wireframes</p><h2 class="cs-section-title">Low Fidelity Screens</h2><p>Linqit was carefully designed to make sure the user finds it easy to interact with the product — wireframes map the home dashboard, send money flow, card details, and bill payment screens.</p><img class="cs-img" src="assets/Linqit_5.png" alt="Wireframes"/></div>
+      <div class="cs-section"><p class="section-label">Style Guide</p><h2 class="cs-section-title">Typography & Colours</h2><p>Colours and fonts were chosen to make the app easily accessible. Fakt Pro was selected for its clean, legible character — and a comprehensive semantic colour palette (blue, amber, green, slate, teal, red) supports all transaction states.</p><img class="cs-img" src="assets/Linqit_6.png" alt="Style guide"/></div>
+      <div class="cs-section"><p class="section-label">Design System</p><h2 class="cs-section-title">Components</h2><p>The design system includes virtual card designs, icon libraries, form inputs, currency selectors, toggle states, and button variants — all built to maintain consistency across every screen of the app.</p><img class="cs-img" src="assets/Linqit_7.png" alt="Design system"/></div>
+      <div class="cs-section">
+        <p class="section-label">Final Design & Testing</p>
+        <h2 class="cs-section-title">UI Design & Usability Feedback</h2>
+        <p>The final UI covers convert, swap, home dashboard, create account, and send money screens — all in a deep navy palette that signals trust and clarity. After completing the prototype, a usability test was conducted and feedback was collected.</p>
+        <img class="cs-img" src="assets/Linqit_8.png" alt="UI design and usability feedback"/>
+        <div class="feedback-card"><p>💬 "One that stood out was the simplicity and easiness of the app."</p></div>
+        <div class="feedback-card"><p>💬 "The FLAG on the homepage makes it easy and intuitive for users to know which account they are on."</p></div>
+      </div>
+    </div>
+    <div class="cs-footer-nav"><button class="back-btn" onclick="showPage('genzaar')">← Previous project</button><button class="back-btn" onclick="showPage('keepevery')">Next project →</button></div>
+  </div>
+
+  <!-- ══════════ KEEPEVERY ══════════ -->
+  <div id="keepevery" class="page">
+    <div class="cs-nav"><button class="back-btn" onclick="showPage('home')">← Back to work</button><span class="cs-nav-title">/ Keepevery</span></div>
+    <div class="cs-hero">
+      <p class="cs-eyebrow">Case study · B2B · SaaS · Web · Business Management</p>
+      <h1 class="cs-title">Customer Communication<br>Platform.</h1>
+      <p class="cs-desc">Keepevery is a customer retention technology platform founded in 2021 that allows businesses to nurture long-lasting customer relationships through automated feedback collection, customer loyalty tracking, and rewarding CRM tools.</p>
+      <div class="cs-tags"><span class="tag">B2B</span><span class="tag">SaaS</span><span class="tag">Web</span><span class="tag">Business Management</span></div>
+    </div>
+    <div class="cs-meta-bar">
+      <div class="cs-meta-item"><span class="cs-meta-label">Client</span><span class="cs-meta-val">Keepevery</span></div>
+      <div class="cs-meta-item"><span class="cs-meta-label">Role</span><span class="cs-meta-val">Product Designer</span></div>
+      <div class="cs-meta-item"><span class="cs-meta-label">Year</span><span class="cs-meta-val">2022</span></div>
+      <div class="cs-meta-item"><span class="cs-meta-label">Platform</span><span class="cs-meta-val">Web</span></div>
+    </div>
+    <div class="cs-cover"><img src="assets/Keepevery_1.png" alt="Keepevery cover"/></div>
+    <div class="cs-body">
+      <div class="cs-section">
+        <p class="section-label">Overview</p>
+        <h2 class="cs-section-title">About the Project</h2>
+        <p>Founded in 2021, Keepevery is a customer retention product that lets businesses manage and automate their strategy to keep every customer better. The solution includes customer feedback campaign management, customer health tracking, and a website builder — automating the customer feedback process end to end.</p>
+        <div class="ps-grid">
+          <div class="ps-card"><h4>My Role</h4><p>Responsible for requirement gathering from stakeholders and business teams, coordination of usability research, wireframes, mockup designs, design documentation, and prototypes. Worked closely with front-end engineers to ensure perfect interface translation.</p></div>
+          <div class="ps-card"><h4>Solution</h4><p>Built a customer retention infrastructure that allows businesses to manage feedback campaigns, track customer health scores, and use a website builder — automating the entire customer feedback process.</p></div>
+        </div>
+      </div>
+      <div class="cs-section">
+        <p class="section-label">Design Process</p>
+        <h2 class="cs-section-title">How I Approached It</h2>
+        <p>A five-stage design process guided the project — from stakeholder discovery through to usability validation.</p>
+        <div class="process-grid">
+          <div class="process-card"><p class="step">Step 1</p><h4>Discover</h4><p>Figured out what stakeholders wanted to achieve, conducted a heuristic assessment of the web app, and spoke with a few customers.</p></div>
+          <div class="process-card"><p class="step">Step 2</p><h4>Define</h4><p>Researched the product in depth, conducted usability tests and user interviews, and identified key user pain points.</p></div>
+          <div class="process-card"><p class="step">Step 3</p><h4>Ideate</h4><p>Generated concepts and drawings to figure out how to make various aspects of the product aesthetically pleasing and user-friendly.</p></div>
+          <div class="process-card"><p class="step">Step 4</p><h4>Design</h4><p>Experimented with multiple approaches and devised solutions to make the app more user-friendly and efficient.</p></div>
+        </div>
+        <div class="process-card"><p class="step">Step 5</p><h4>Validate</h4><p>Conducted a series of usability tests with users to validate the design and solutions.</p></div>
+      </div>
+      <div class="cs-section"><p class="section-label">Step 1 · Discover</p><h2 class="cs-section-title">Stakeholder Interview & Evaluation</h2><p>Discussion with the stakeholder provided insight into what was required. Their main concern was the product meeting industry standards in ease of use and UI aesthetic, and they were searching for a means to automate the customer retention strategy experience. A heuristic evaluation identified two key gaps: users didn't have a seamless way to use feedback to inspire trust, and creating simple branded surveys was difficult.</p><img class="cs-img" src="assets/Keepevery_3.png" alt="Discover - stakeholder interview and evaluation"/></div>
+      <div class="cs-section">
+        <p class="section-label">Step 2 · Define & Analysis</p>
+        <h2 class="cs-section-title">User Persona</h2>
+        <p>The user persona was created from user interviews — targeting business owners who need to manage and gather customer feedback at scale.</p>
+        <div class="persona-card">
+          <div class="persona-img"><img src="assets/Keepevery_4.png" alt="John Toye persona"/></div>
+          <div class="persona-body">
+            <p class="persona-name">John Toye</p>
+            <p class="persona-sub">Age 28 · CEO, Nadesk</p>
+            <p class="persona-section-title">Goal</p>
+            <p>Manage and gather a clutter of customers' feedback efficiently across multiple channels.</p>
+            <p class="persona-section-title">Pain Points</p>
+            <ul class="persona-list"><li>Tedious process of keeping up with customer feedback manually</li><li>Separating types of customers for rewards and reviews</li><li>Distribution of campaigns to multiple mediums</li></ul>
+          </div>
+        </div>
+      </div>
+      <div class="cs-section"><p class="section-label">Step 3 · Ideate</p><h2 class="cs-section-title">Key Features & Wireframes</h2><p>Key features identified to 10x the user experience: Feedback Management, Feedback Automation, Distribution Channels, and Website Builder. Wireframes mapped out feedback management details and the automated campaign creation flow.</p><img class="cs-img" src="assets/Keepevery_5.png" alt="Ideate - key features and wireframes"/></div>
+      <div class="cs-section"><p class="section-label">Step 4 · Design</p><h2 class="cs-section-title">UI Design</h2><p>The final UI covers the full product — home dashboard, feedback campaign management, create campaign builder, website template selector, website editor, customer management, team management, and campaign distribution setup.</p><img class="cs-img" src="assets/Keepevery_6.png" alt="UI Design - all screens"/></div>
+      <div class="cs-section">
+        <p class="section-label">Step 5 · Validate</p>
+        <h2 class="cs-section-title">Usability Testing</h2>
+        <p>After the visual design was completed, the prototype was tested with 5 representative users. Participants were given two key tasks to perform: create a campaign and set up a website.</p>
+        <img class="cs-img" src="assets/Keepevery_7.png" alt="Validate - usability test"/>
+        <div class="feedback-card"><p>💬 "The participants were able to navigate through the app easily. They appreciated the new design and gave a few inputs."</p></div>
+      </div>
+    </div>
+    <div class="cs-footer-nav"><button class="back-btn" onclick="showPage('linqit')">← Previous project</button><button class="back-btn" onclick="showPage('campushire')">Next project →</button></div>
+  </div>
+
+  <!-- ══════════ CAMPUSHIRE ══════════ -->
+  <div id="campushire" class="page">
+    <div class="cs-nav"><button class="back-btn" onclick="showPage('home')">← Back to work</button><span class="cs-nav-title">/ CampusHire</span></div>
+    <div class="cs-hero">
+      <p class="cs-eyebrow">Case study · B2B & B2C · SaaS · Web · Employment System</p>
+      <h1 class="cs-title">Student Employment<br>System.</h1>
+      <p class="cs-desc">CampusHire is a platform designed to help students looking for jobs after graduation and recruiters looking for skilled students to hire for entry-level roles — bringing together job discovery, application tracking, and recruiter tools in one place.</p>
+      <div class="cs-tags"><span class="tag">B2B</span><span class="tag">B2C</span><span class="tag">SaaS</span><span class="tag">Web</span><span class="tag">Employment System</span></div>
+    </div>
+    <div class="cs-meta-bar">
+      <div class="cs-meta-item"><span class="cs-meta-label">Client</span><span class="cs-meta-val">CampusHire</span></div>
+      <div class="cs-meta-item"><span class="cs-meta-label">Role</span><span class="cs-meta-val">UX Research · UI Design</span></div>
+      <div class="cs-meta-item"><span class="cs-meta-label">Year</span><span class="cs-meta-val">2021</span></div>
+      <div class="cs-meta-item"><span class="cs-meta-label">Platform</span><span class="cs-meta-val">Web</span></div>
+    </div>
+    <div class="cs-cover"><img src="assets/CampusHire_1.png" alt="CampusHire cover"/></div>
+    <div class="cs-body">
+      <div class="cs-section">
+        <p class="section-label">Overview</p>
+        <h2 class="cs-section-title">Goals, Role & Approach</h2>
+        <p>My goal was to design a web and mobile app that allows students to develop their career, while giving recruiters an efficient way to discover and hire skilled entry-level talent.</p>
+        <div class="ps-grid">
+          <div class="ps-card"><h4>Role</h4><p>UX Research, Information Architecture, user flow, wireframes, UI design.</p></div>
+          <div class="ps-card"><h4>Problems</h4><ul><li>Recruiters spend time searching for students with skills on LinkedIn</li><li>No database for post-graduates looking for jobs</li><li>Recruiters are biased on race and gender</li><li>No way to verify job details</li><li>Job fairs cost a lot to organise</li></ul></div>
+        </div>
+        <div class="ps-card" style="margin-top:12px;"><h4>Solutions</h4><ul><li>Application automation</li><li>Easy job tracking for students</li><li>Easy onboarding for students</li><li>Job templates for recruiters</li></ul></div>
+      </div>
+      <div class="cs-section"><p class="section-label">User Journey</p><h2 class="cs-section-title">No Long Wait Time</h2><p>Two parallel journeys were mapped — students applying for jobs, and recruiters hiring talent — both designed to remove friction at every step, from sign-up through to application status updates.</p><img class="cs-img" src="assets/CampusHire_3.png" alt="User journey"/></div>
+      <div class="cs-section">
+        <p class="section-label">Users Persona</p>
+        <h2 class="cs-section-title">Understanding the Student</h2>
+        <div class="persona-card">
+          <div class="persona-img"><img src="assets/CampusHire_4.png" alt="Jack Raymond"/></div>
+          <div class="persona-body">
+            <p class="persona-name">Jack Raymond</p>
+            <p class="persona-sub">Student · Canada</p>
+            <p class="persona-section-title">Background</p>
+            <p>A final-year student at Ontario Tech University looking for a way to get a paid internship after school.</p>
+            <p class="persona-section-title">Pain Points</p>
+            <ul class="persona-list"><li>Lack of transparency from recruiters</li><li>Tracking job applications is stressful</li><li>Companies sell student data to third parties</li><li>No paid internship opportunities</li></ul>
+            <p class="persona-section-title">Goals</p>
+            <p>He wants to be able to get an entry-level job after school.</p>
+          </div>
+        </div>
+      </div>
+      <div class="cs-section"><p class="section-label">Wireframes · Student Side</p><h2 class="cs-section-title">Job Discovery & Profile</h2><p>Low-fidelity wireframes mapped the student experience — job listings, applications, and dashboard overview before moving into high fidelity.</p><img class="cs-img" src="assets/CampusHire_5.png" alt="Student wireframes"/></div>
+      <div class="cs-section"><p class="section-label">Design System</p><h2 class="cs-section-title">Components</h2><p>A complete component library — form inputs, button states, radio/checkbox/toggle controls, and job/applicant cards — ensured visual consistency across the entire product.</p><img class="cs-img" src="assets/CampusHire_6.png" alt="Design system"/></div>
+      <div class="cs-section"><p class="section-label">Final Design</p><h2 class="cs-section-title">Job Listings, Profile & Interview Scheduling</h2><p>The final UI lets students browse jobs from multiple employers, schedule and manage video interviews directly from the app, and showcase a public profile recruiters can view — alongside detailed job description pages.</p><img class="cs-img" src="assets/CampusHire_7.png" alt="Jobs, public profile, interview details"/></div>
+      <div class="cs-section"><p class="section-label">Final Design · Recruiter Side</p><h2 class="cs-section-title">Posting Jobs & Managing Applicants</h2><p>Recruiters can post jobs in a guided two-step flow, review and filter applicants by status (On-Hold, Selected, Declined, Interview, Hired), track everything from a central dashboard, and manage interviews through an integrated calendar.</p><img class="cs-img" src="assets/CampusHire_8.png" alt="Post a job, applicants, dashboard, calendar"/></div>
+      <div class="cs-section">
+        <p class="section-label">Platform Snapshot</p>
+        <h2 class="cs-section-title">At a Glance</h2>
+        <div class="stat-bar">
+          <div class="stat-card"><p class="stat-val">4,000</p><p class="stat-label">Total applicants</p></div>
+          <div class="stat-card"><p class="stat-val">200</p><p class="stat-label">Total jobs posted</p></div>
+          <div class="stat-card"><p class="stat-val">50</p><p class="stat-label">Candidate interviews</p></div>
+          <div class="stat-card"><p class="stat-val">30</p><p class="stat-label">Candidates hired</p></div>
+        </div>
+      </div>
+    </div>
+    <div class="cs-footer-nav"><button class="back-btn" onclick="showPage('keepevery')">← Previous project</button><button class="back-btn" onclick="showPage('home')">Back to all work →</button></div>
+  </div>
+
+</div>
+
+<script>
+function showPage(id) {
+  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  try { window.scrollTo(0,0); } catch(e){}
+}
+</script>
 </body>
-
 </html>
